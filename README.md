@@ -1,17 +1,36 @@
-# sv
+# living-song
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A collaborative music creation project where people work together to create a song based on multiple tracks. Each day, one track changes to another based on user votes.
 
-## Creating a project
+## Database Setup
 
-If you're seeing this, you've probably already done this step. Congrats!
+This project uses PostgreSQL with Drizzle ORM. To set up the database:
+
+1. Start the PostgreSQL container:
 
 ```sh
-# create a new project in the current directory
-npx sv create
+npm run db:start
+```
 
-# create a new project in my-app
-npx sv create my-app
+2. Set the DATABASE_URL environment variable:
+
+```sh
+# For local development
+DATABASE_URL=postgresql://root:mysecretpassword@localhost:5432/local
+```
+
+3. Push the schema to the database:
+
+```sh
+npm run db:push
+```
+
+### Database Commands
+
+```sh
+npm run db:generate    # Generate migration files from schema changes
+npm run db:migrate     # Run pending migrations
+npm run db:studio      # Open Drizzle Studio for database management
 ```
 
 ## Developing
